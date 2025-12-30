@@ -1,5 +1,5 @@
 {
-  "name": "qr-pro---advanced-qr-code-generator-|-مولد-رموز-qr-المطور",
+  "name": "منصة-الباركود-العالمية-|-global-barcode-platform",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,9 @@
   "dependencies": {
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "qrcode.react": "^4.2.0"
+    "qrcode.react": "^4.2.0",
+    "bwip-js": "^4.5.1",
+    "jspdf": "^2.5.1"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

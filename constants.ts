@@ -3,8 +3,11 @@ import { Translation, Language } from './types';
 
 export const TRANSLATIONS: Record<Language, Translation> = {
   ar: {
-    title: 'مولد رموز QR المطور',
-    subtitle: 'أنشئ رموز QR احترافية بسهولة تامة',
+    title: 'منصة الباركود العالمية',
+    subtitle: 'أقوى أداة ويب مجانية لإنشاء كافة أنواع الرموز والباركود',
+    qrTool: 'مولد رموز QR المطور',
+    barcodeTool: 'مولد الباركود الاحترافي',
+    selectTool: 'اختر الخدمة المطلوبة',
     link: 'رابط (URL)',
     text: 'نص',
     wifi: 'واي فاي',
@@ -36,11 +39,18 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     max: 'قصوى (4096px)',
     livePreview: 'معاينة مباشرة',
     lightMode: 'وضع النهار',
-    darkMode: 'وضع الليل'
+    darkMode: 'وضع الليل',
+    barcodeSymbology: 'نوع الباركود',
+    barcodeValue: 'قيمة الباركود',
+    showText: 'إظهار النص أسفل الرمز',
+    barcodeDesc: 'مولد الباركود والرموز عبر الويب الأكثر قدرة في العالم. يدعم كافة التنسيقات العالمية للمنتجات والتجارة الدولية.'
   },
   en: {
-    title: 'Advanced QR Generator',
-    subtitle: 'Create professional QR codes with ease',
+    title: 'Global Barcode Platform',
+    subtitle: "The world's most capable free web-based online barcode generator and QR Code generator.",
+    qrTool: 'Advanced QR Generator',
+    barcodeTool: 'Online Barcode Generator',
+    selectTool: 'Select Desired Service',
     link: 'Link (URL)',
     text: 'Text',
     wifi: 'Wi-Fi',
@@ -54,7 +64,7 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     bgColor: 'Background Color',
     removeMargin: 'Remove White Border',
     downloadQuality: 'Download Quality',
-    downloadBtn: 'Download QR (PNG)',
+    downloadBtn: 'Download (PNG)',
     placeholderUrl: 'https://example.com',
     placeholderText: 'Type your text here...',
     placeholderPhone: '+123456789',
@@ -72,6 +82,26 @@ export const TRANSLATIONS: Record<Language, Translation> = {
     max: 'Max (4096px)',
     livePreview: 'Live Preview',
     lightMode: 'Light Mode',
-    darkMode: 'Dark Mode'
+    darkMode: 'Dark Mode',
+    barcodeSymbology: 'Barcode Type',
+    barcodeValue: 'Barcode Value',
+    showText: 'Show text below barcode',
+    barcodeDesc: 'Download symbols of all major symbologies including EAN, UPC, QR Code, Micro QR Code, Han Xin Code, DotCode, Ultracode, ISBN, GS1-128, Code 39, Code 93, Data Matrix and more.'
   }
 };
+
+export const BARCODE_SYMBOLOGIES = [
+  { value: 'ean13', label: 'EAN-13' },
+  { value: 'upca', label: 'UPC-A' },
+  { value: 'code128', label: 'Code 128' },
+  { value: 'code39', label: 'Code 39' },
+  { value: 'datamatrix', label: 'Data Matrix' },
+  { value: 'gs1-128', label: 'GS1-128' },
+  { value: 'itf14', label: 'ITF-14' },
+  { value: 'pdf417', label: 'PDF417' },
+  { value: 'azteccode', label: 'Aztec' },
+  { value: 'pharmacode', label: 'Pharmacode' },
+  { value: 'isbn', label: 'ISBN' },
+  { value: 'issn', label: 'ISSN' },
+  { value: 'qr-code', label: 'QR Code (Std)' }
+];

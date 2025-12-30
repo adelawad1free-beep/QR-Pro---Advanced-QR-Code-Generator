@@ -1,6 +1,7 @@
 
 export type Language = 'ar' | 'en';
 export type Theme = 'light' | 'dark';
+export type AppMode = 'qr' | 'barcode' | 'select';
 
 export enum QRType {
   URL = 'URL',
@@ -21,9 +22,21 @@ export interface QRConfig {
   level: 'L' | 'M' | 'Q' | 'H';
 }
 
+export interface BarcodeConfig {
+  symbology: string;
+  text: string;
+  scale: number;
+  height: number;
+  includetext: boolean;
+  guardwhitespace: boolean;
+}
+
 export interface Translation {
   title: string;
   subtitle: string;
+  qrTool: string;
+  barcodeTool: string;
+  selectTool: string;
   link: string;
   text: string;
   wifi: string;
@@ -56,4 +69,8 @@ export interface Translation {
   livePreview: string;
   lightMode: string;
   darkMode: string;
+  barcodeSymbology: string;
+  barcodeValue: string;
+  showText: string;
+  barcodeDesc: string;
 }
