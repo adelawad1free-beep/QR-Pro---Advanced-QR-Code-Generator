@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Pro | Advanced QR Code Generator | مولد رموز QR المطور</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="أفضل مولد رموز QR احترافي مجاني. أنشئ باركود للروابط، الواي فاي، الرسائل، وجهات الاتصال بجودة 4K. يدعم اللغة العربية والانجليزية. Create professional QR codes for free. Supports URLs, WiFi, vCard, and more in high resolution." />
+    <meta name="keywords" content="QR Code Generator, Create QR Code, Free QR Code, Arabic QR Generator, مولد رموز QR, إنشاء باركود, باركود واي فاي, باركود مجاني, QR Pro, 4K QR Code, Professional QR, QR vCard, QR Email" />
+    <meta name="author" content="QR Pro Engine" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qr-pro-generator.app/" />
+    <meta property="og:title" content="QR Pro | Advanced QR Code Generator | مولد رموز QR المطور" />
+    <meta property="og:description" content="أنشئ رموز QR احترافية ومخصصة بسهولة تامة وبأعلى جودة ممكنة. Create professional and custom QR codes easily with the highest quality." />
+    <meta property="og:image" content="https://qr-pro-generator.app/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="QR Pro | Advanced QR Code Generator" />
+    <meta property="twitter:description" content="أفضل أداة لإنشاء رموز QR مطورة. جربها الآن مجاناً." />
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "QR Pro Advanced QR Generator",
+      "alternateName": "مولد رموز QR المطور",
+      "description": "A high-performance web application to generate custom QR codes in high resolution (up to 4K). Supports URL, WiFi, SMS, Email, and vCard.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --font-arabic: 'Cairo', sans-serif;
+        --font-english: 'Inter', sans-serif;
+      }
+      [dir="rtl"] { font-family: var(--font-arabic); }
+      [dir="ltr"] { font-family: var(--font-english); }
+      
+      .qr-shadow {
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.08);
+      }
+      .dark .qr-shadow {
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4);
+      }
+      
+      body {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      /* Scrollbar concealment while keeping functionality */
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "qrcode.react": "https://esm.sh/qrcode.react@^4.2.0"
+      }
+    }
+    </script>
+  </head>
+  <body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 min-h-screen">
+    <div id="root"></div>
+  </body>
+</html>
