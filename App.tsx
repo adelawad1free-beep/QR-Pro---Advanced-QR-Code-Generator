@@ -29,7 +29,6 @@ const App: React.FC = () => {
   const t = TRANSLATIONS[lang];
   const isRtl = lang === 'ar';
   const barcodeRef = useRef<HTMLCanvasElement>(null);
-  const qrSvgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
@@ -188,7 +187,6 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen pb-20 transition-all duration-300">
       <div className="hidden">
-        {/* Hidden SVG version for QR Export */}
         <QRCodeSVG 
           id="qr-svg-hidden" 
           value={qrValue} 
@@ -348,7 +346,38 @@ const App: React.FC = () => {
         )}
       </main>
 
-      <footer className="mt-24 border-t border-gray-100 dark:border-slate-800 py-12 bg-white dark:bg-slate-950">
+      {/* Buy Me A Coffee Section - Resized to be smaller and more elegant */}
+      <div className="max-w-4xl mx-auto px-4 mt-12">
+        <div className="relative overflow-hidden p-6 sm:p-8 bg-white dark:bg-slate-900 rounded-3xl border-2 border-orange-100 dark:border-orange-900/30 qr-shadow">
+          <div className="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-orange-50 dark:bg-orange-900/10 rounded-full blur-2xl"></div>
+          <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex flex-col items-center md:items-start text-center md:text-start gap-2">
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-orange-50 dark:bg-orange-900/20 rounded-full text-orange-600 dark:text-orange-400 text-[9px] font-black uppercase tracking-widest">
+                <span className="animate-pulse">☕</span> {isRtl ? 'دعم استمرار المنصة' : 'Support our Growth'}
+              </div>
+              <h2 className="text-xl font-black text-gray-800 dark:text-white leading-tight">
+                {isRtl ? 'ساعدنا ليبقى الموقع مجانياً!' : 'Help us keep the platform free!'}
+              </h2>
+              <p className="text-gray-500 dark:text-gray-400 text-xs font-medium max-w-sm">
+                {isRtl 
+                  ? 'تبرع بسيط يساعدنا على تغطية تكاليف السيرفرات وإضافة مميزات جديدة.' 
+                  : 'A small donation helps us cover server costs and keep adding new features.'}
+              </p>
+            </div>
+            <a 
+              href="https://buymeacoffee.com/guidai" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-3 px-6 py-3.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-2xl font-black text-sm transition-all hover:scale-105 active:scale-95 shadow-lg shadow-orange-200 dark:shadow-none"
+            >
+              <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="BMC" className="w-5 h-5" />
+              <span>{isRtl ? 'ادعمنا بكوب قهوة' : 'Buy me a coffee'}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <footer className="mt-12 border-t border-gray-100 dark:border-slate-800 py-12 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <div className="flex flex-wrap justify-center gap-6 mb-8 text-[11px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-600">
             <span>Online Barcode Generator</span>
