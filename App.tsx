@@ -184,6 +184,9 @@ const App: React.FC = () => {
     </div>
   );
 
+  const inputClass = "w-full p-4 bg-gray-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-blue-500 rounded-2xl outline-none transition-all dark:text-white placeholder:text-gray-400 text-sm";
+  const textareaClass = "w-full p-4 h-32 bg-gray-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-blue-500 rounded-2xl outline-none transition-all resize-none dark:text-white placeholder:text-gray-400 text-sm";
+
   return (
     <div className="min-h-screen pb-20 transition-all duration-300">
       <div className="hidden">
@@ -232,7 +235,7 @@ const App: React.FC = () => {
             <div className="lg:col-span-7 bg-white dark:bg-slate-900 p-5 sm:p-10 rounded-[2.5rem] qr-shadow border border-gray-100 dark:border-slate-800">
               {mode === 'qr' ? (
                 <>
-                  <div className="grid grid-cols-6 gap-1 sm:gap-2 mb-8 bg-gray-50 dark:bg-slate-800/50 p-1.5 rounded-2xl no-scrollbar">
+                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-1 sm:gap-2 mb-8 bg-gray-50 dark:bg-slate-800/50 p-1.5 rounded-2xl no-scrollbar">
                     <button onClick={() => setActiveTab(QRType.URL)} className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all ${activeTab === QRType.URL ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700'}`}><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.826L10.242 9.242a4 4 0 115.656 5.656l-1.101 1.101m-.758-4.826L12 12" /></svg><span className="text-[8px] mt-1 uppercase font-bold">{t.link}</span></button>
                     <button onClick={() => setActiveTab(QRType.TEXT)} className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all ${activeTab === QRType.TEXT ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700'}`}><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg><span className="text-[8px] mt-1 uppercase font-bold">{t.text}</span></button>
                     <button onClick={() => setActiveTab(QRType.WIFI)} className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all ${activeTab === QRType.WIFI ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700'}`}><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg><span className="text-[8px] mt-1 uppercase font-bold">{t.wifi}</span></button>
@@ -240,11 +243,56 @@ const App: React.FC = () => {
                     <button onClick={() => setActiveTab(QRType.SMS)} className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all ${activeTab === QRType.SMS ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700'}`}><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg><span className="text-[8px] mt-1 uppercase font-bold">{t.sms}</span></button>
                     <button onClick={() => setActiveTab(QRType.VCARD)} className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all ${activeTab === QRType.VCARD ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700'}`}><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg><span className="text-[8px] mt-1 uppercase font-bold">{t.vcard}</span></button>
                   </div>
+
                   <div className="space-y-6">
                     <h3 className="text-xl font-black flex items-center gap-3 text-gray-800 dark:text-white"><span className="w-2 h-8 bg-blue-600 rounded-full"></span>{t.data}</h3>
-                    {activeTab === QRType.URL && <input type="url" value={formData.url} onChange={(e) => updateFormData('url', e.target.value)} placeholder={t.placeholderUrl} className="w-full p-5 bg-gray-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-blue-500 rounded-2xl outline-none transition-all dark:text-white" />}
-                    {activeTab === QRType.TEXT && <textarea value={formData.text} onChange={(e) => updateFormData('text', e.target.value)} placeholder={t.placeholderText} className="w-full p-5 h-40 bg-gray-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-blue-500 rounded-2xl outline-none transition-all resize-none dark:text-white" />}
-                    {activeTab === QRType.WIFI && <div className="grid grid-cols-1 gap-4"><input type="text" value={formData.wifiSsid} onChange={(e) => updateFormData('wifiSsid', e.target.value)} placeholder={t.ssid} className="w-full p-5 bg-gray-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-blue-500 rounded-2xl outline-none transition-all dark:text-white" /><input type="password" value={formData.wifiPassword} onChange={(e) => updateFormData('wifiPassword', e.target.value)} placeholder={t.password} className="w-full p-5 bg-gray-50 dark:bg-slate-800/50 border-2 border-transparent focus:border-blue-500 rounded-2xl outline-none transition-all dark:text-white" /></div>}
+                    
+                    <div className="grid grid-cols-1 gap-4">
+                      {activeTab === QRType.URL && (
+                        <input type="url" value={formData.url} onChange={(e) => updateFormData('url', e.target.value)} placeholder={t.placeholderUrl} className={inputClass} />
+                      )}
+                      
+                      {activeTab === QRType.TEXT && (
+                        <textarea value={formData.text} onChange={(e) => updateFormData('text', e.target.value)} placeholder={t.placeholderText} className={textareaClass} />
+                      )}
+                      
+                      {activeTab === QRType.WIFI && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <input type="text" value={formData.wifiSsid} onChange={(e) => updateFormData('wifiSsid', e.target.value)} placeholder={t.ssid} className={inputClass} />
+                          <input type="password" value={formData.wifiPassword} onChange={(e) => updateFormData('wifiPassword', e.target.value)} placeholder={t.password} className={inputClass} />
+                          <select value={formData.wifiEncryption} onChange={(e) => updateFormData('wifiEncryption', e.target.value)} className={`${inputClass} appearance-none cursor-pointer`}>
+                            <option value="WPA">WPA/WPA2</option>
+                            <option value="WEP">WEP</option>
+                            <option value="nopass">None</option>
+                          </select>
+                        </div>
+                      )}
+
+                      {activeTab === QRType.EMAIL && (
+                        <div className="space-y-4">
+                          <input type="email" value={formData.email} onChange={(e) => updateFormData('email', e.target.value)} placeholder={t.email} className={inputClass} />
+                          <input type="text" value={formData.emailSubject} onChange={(e) => updateFormData('emailSubject', e.target.value)} placeholder={t.subject} className={inputClass} />
+                          <textarea value={formData.emailBody} onChange={(e) => updateFormData('emailBody', e.target.value)} placeholder={t.body} className={textareaClass} />
+                        </div>
+                      )}
+
+                      {activeTab === QRType.SMS && (
+                        <div className="space-y-4">
+                          <input type="tel" value={formData.smsPhone} onChange={(e) => updateFormData('smsPhone', e.target.value)} placeholder={t.placeholderPhone} className={inputClass} />
+                          <textarea value={formData.smsMessage} onChange={(e) => updateFormData('smsMessage', e.target.value)} placeholder={t.body} className={textareaClass} />
+                        </div>
+                      )}
+
+                      {activeTab === QRType.VCARD && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <input type="text" value={formData.vFirstName} onChange={(e) => updateFormData('vFirstName', e.target.value)} placeholder={t.firstName} className={inputClass} />
+                          <input type="text" value={formData.vLastName} onChange={(e) => updateFormData('vLastName', e.target.value)} placeholder={t.lastName} className={inputClass} />
+                          <input type="text" value={formData.vOrg} onChange={(e) => updateFormData('vOrg', e.target.value)} placeholder={t.org} className={`${inputClass} sm:col-span-2`} />
+                          <input type="tel" value={formData.vPhone} onChange={(e) => updateFormData('vPhone', e.target.value)} placeholder={t.placeholderPhone} className={inputClass} />
+                          <input type="email" value={formData.vEmail} onChange={(e) => updateFormData('vEmail', e.target.value)} placeholder={t.email} className={inputClass} />
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </>
               ) : (
@@ -346,7 +394,6 @@ const App: React.FC = () => {
         )}
       </main>
 
-      {/* Buy Me A Coffee Section - Resized to be smaller and more elegant */}
       <div className="max-w-4xl mx-auto px-4 mt-12">
         <div className="relative overflow-hidden p-6 sm:p-8 bg-white dark:bg-slate-900 rounded-3xl border-2 border-orange-100 dark:border-orange-900/30 qr-shadow">
           <div className="absolute top-0 right-0 -mt-8 -mr-8 w-32 h-32 bg-orange-50 dark:bg-orange-900/10 rounded-full blur-2xl"></div>
